@@ -1,0 +1,263 @@
+.section-heading {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.section-heading .subtitle {
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  letter-spacing: 0.18em;
+}
+
+.section-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  margin: 0;
+}
+
+.menu-card {
+  border: 1px solid var(--border);
+  padding: 26px 22px;
+  border-radius: 24px;
+  text-align: center;
+  background: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.menu-card .menu-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.menu-card .menu-icon .image-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.menu-card h3 {
+  margin: 18px 0 10px;
+  font-size: 1.1rem;
+}
+
+.menu-card p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.menu-card .link {
+  display: inline-flex;
+  text-decoration: none;
+  color: var(--red);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.service-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+}
+
+.service-card .service-img {
+  height: 160px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.service-card h4 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.service-card p {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.testimonial-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 28px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.testimonial-card .quote-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin: 0;
+  color: var(--charcoal);
+}
+
+.testimonial-card .review {
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+.testimonial-card hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 8px 0;
+}
+
+.testimonial-card .meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-card .avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.testimonial-card .person-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.testimonial-card .person-location {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.blog-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.blog-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.blog-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.blog-card .blog-img {
+  height: 180px;
+  border-radius: 0;
+}
+
+.blog-card.large .blog-img {
+  height: 100%;
+  min-height: 300px;
+}
+
+.blog-card.large {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.blog-card .blog-body {
+  padding: 16px;
+}
+
+.blog-card .blog-body .meta {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.blog-card .blog-body h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--charcoal);
+}
+
+.blog-card .blog-body p {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 8px 0 0;
+  line-height: 1.6;
+}
+
+.contact-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.08);
+}
+
+.contact-card .contact-item {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.contact-card strong {
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.modal-body {
+  text-align: center;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
