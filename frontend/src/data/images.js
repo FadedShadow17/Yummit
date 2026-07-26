@@ -1,0 +1,66 @@
+const images = {
+  'hero-1': 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop',
+  'hero-2': 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop',
+  'hero-3': 'https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?w=400&h=300&fit=crop',
+  'hero-4': 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400&h=300&fit=crop',
+
+  'cat-nepali': 'https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?w=100&h=100&fit=crop',
+  'cat-fastfood': 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=100&h=100&fit=crop',
+  'cat-chinese': 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=100&h=100&fit=crop',
+  'cat-korean': 'https://images.unsplash.com/photo-1553163147-622ab57be1c7?w=100&h=100&fit=crop',
+
+  'info-food': 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&h=500&fit=crop',
+
+  'svc-catering': 'https://images.unsplash.com/photo-1555244162-803834f70033?w=300&h=200&fit=crop',
+  'svc-birthday': 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=300&h=200&fit=crop',
+  'svc-wedding': 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=300&h=200&fit=crop',
+  'svc-event': 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=300&h=200&fit=crop',
+
+  'delivery-1': 'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=400&h=500&fit=crop',
+  'delivery-2': 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=300&h=220&fit=crop',
+  'delivery-3': 'https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=300&h=220&fit=crop',
+
+  'avatar-1': 'https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=80&h=80&fit=crop',
+  'avatar-2': 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop',
+  'avatar-3': 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop',
+
+  'blog-featured': 'https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?w=600&h=400&fit=crop',
+  'blog-1': 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=300&h=200&fit=crop',
+  'blog-2': 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=300&h=200&fit=crop',
+  'blog-3': 'https://images.unsplash.com/photo-1625398407796-82650a8c135f?w=300&h=200&fit=crop',
+  'blog-4': 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&h=200&fit=crop',
+
+  'about-img': 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&h=500&fit=crop',
+  'video-bg': 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&h=400&fit=crop',
+  'stat-img': 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=400&fit=crop',
+
+  'menu-momo': 'https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?w=400&h=250&fit=crop',
+  'menu-chowmein': 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400&h=250&fit=crop',
+  'menu-sekuwa': 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&h=250&fit=crop',
+  'menu-burger': 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=250&fit=crop',
+  'menu-pizza': 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=250&fit=crop',
+  'menu-chickenchilly': 'https://images.unsplash.com/photo-1525755662778-989d0524087e?w=400&h=250&fit=crop',
+  'menu-friedrice': 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&h=250&fit=crop',
+  'menu-manchurian': 'https://images.unsplash.com/photo-1645696996798-35bad7f4f1b5?w=400&h=250&fit=crop',
+  'menu-soup': 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&h=250&fit=crop',
+  'menu-kfc': 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400&h=250&fit=crop',
+  'menu-bibimbap': 'https://images.unsplash.com/photo-1553163147-622ab57be1c7?w=400&h=250&fit=crop',
+  'menu-tteokbokki': 'https://images.unsplash.com/photo-1635363638580-c2809d049eee?w=400&h=250&fit=crop',
+
+  'blog-grid-1': 'https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?w=400&h=280&fit=crop',
+  'blog-grid-2': 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=400&h=280&fit=crop',
+  'blog-grid-3': 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=280&fit=crop',
+  'blog-grid-4': 'https://images.unsplash.com/photo-1625398407796-82650a8c135f?w=400&h=280&fit=crop',
+  'blog-grid-5': 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=280&fit=crop',
+  'blog-grid-6': 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&h=280&fit=crop',
+  'blog-grid-7': 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=400&h=280&fit=crop',
+  'blog-grid-8': 'https://images.unsplash.com/photo-1567337710282-00832b415979?w=400&h=280&fit=crop',
+  'blog-grid-9': 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&h=280&fit=crop',
+
+  'blog-detail-hero': 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1000&h=400&fit=crop',
+  'blog-detail-1': 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&h=350&fit=crop',
+  'blog-detail-2': 'https://images.unsplash.com/photo-1567337710282-00832b415979?w=500&h=350&fit=crop',
+  'blog-detail-3': 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=500&h=350&fit=crop',
+};
+
+export default images;
