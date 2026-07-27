@@ -204,6 +204,10 @@
   color: var(--red);
 }
 
+.view-map-link {
+  display: none;
+}
+
 .book-phone-wrapper {
   display: flex;
   align-items: center;
@@ -522,13 +526,67 @@
 }
 
 .map-section {
-  width: 100%;
-  line-height: 0;
+  background: var(--cream);
+  padding: 60px 0;
 }
 
-.map-section iframe {
+
+.map-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.map-section-title svg {
+  color: var(--red);
+}
+
+.map-section-title h3 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--charcoal);
+}
+
+.map-container {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.map-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.map-header svg {
+  color: var(--red);
+  flex-shrink: 0;
+}
+
+.map-header-text h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--charcoal);
+  font-weight: 600;
+}
+
+.map-header-text span {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.map-container iframe {
   width: 100%;
-  min-height: 400px;
+  height: 450px;
+  display: block;
 }
 
 .booking-summary-overlay {

@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -37,6 +37,14 @@ const BookTablePage = () => {
   const { user } = useContext(AuthContext);
   const { toggleFavourite, isFavourite, addBooking } = useContext(BookingContext);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const formRef = useRef(null);
+
+  const handleSelectRestaurant = (rest) => {
+    setSelectedRestaurant(rest);
+    setTimeout(() => {
+      formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
   const [formData, setFormData] = useState({
     date: '',
     time: '',
@@ -162,7 +170,7 @@ const BookTablePage = () => {
                 <div
                   key={rest.id}
                   className={`restaurant-card ${selectedRestaurant?.id === rest.id ? 'selected' : ''}`}
-                  onClick={() => setSelectedRestaurant(rest)}
+                  onClick={() => handleSelectRestaurant(rest)}
                 >
                   <div className="restaurant-card-img">
                     <ImagePlaceholder name={rest.image} className="rest-image" />
@@ -196,7 +204,7 @@ const BookTablePage = () => {
 
         {selectedRestaurant && (
           <>
-            <section className="book-form-section" id="booking-form">
+            <section className="book-form-section" id="booking-form" ref={formRef}>
               <div className="page-container">
                 <div className="selected-restaurant-banner">
                   <h2>Booking at <span>{selectedRestaurant.name}</span></h2>
@@ -265,17 +273,36 @@ const BookTablePage = () => {
               </div>
             </section>
 
-            <section className="map-section">
-              <iframe
-                title={`${selectedRestaurant.name} Location`}
-                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${selectedRestaurant.mapQuery}`}
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+            <section className="map-section" id="restaurant-map">
+              <div className="page-container">
+                <div className="map-section-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <h3>Find {selectedRestaurant.name}</h3>
+                </div>
+                <div className="map-container">
+                  <div className="map-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    <div className="map-header-text">
+                      <h4>{selectedRestaurant.name}</h4>
+                      <span>{selectedRestaurant.location}</span>
+                    </div>
+                  </div>
+                  <iframe
+                    title={`${selectedRestaurant.name} Location`}
+                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${selectedRestaurant.mapQuery}`}
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+              </div>
             </section>
           </>
         )}
