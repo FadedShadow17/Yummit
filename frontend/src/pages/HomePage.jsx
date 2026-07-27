@@ -79,24 +79,42 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section className="delivery page-section">
-          <div className="page-container delivery-section">
-            <div className="delivery-left">
-              <div className="collage">
-                <ImagePlaceholder name="booking-1" className="c1 rounded" />
-                <ImagePlaceholder name="booking-2" className="c2 rounded" />
-                <ImagePlaceholder name="booking-3" className="c3 rounded" />
-              </div>
+        <section className="booking-preview page-section">
+          <div className="page-container">
+            <SectionHeading title="Reserve Your Table Today" />
+            <p className="booking-preview-subtitle">Browse our partner restaurants and book your perfect dining spot in seconds.</p>
+            <div className="booking-preview-grid">
+              <Link to="/book" className="booking-preview-card">
+                <ImagePlaceholder name="rest-1" className="booking-preview-img" />
+                <div className="booking-preview-info">
+                  <h4>Himalayan Dine</h4>
+                  <span>Thamel, Kathmandu</span>
+                </div>
+              </Link>
+              <Link to="/book" className="booking-preview-card">
+                <ImagePlaceholder name="rest-5" className="booking-preview-img" />
+                <div className="booking-preview-info">
+                  <h4>Thakali Bhanchha</h4>
+                  <span>New Baneshwor</span>
+                </div>
+              </Link>
+              <Link to="/book" className="booking-preview-card">
+                <ImagePlaceholder name="rest-7" className="booking-preview-img" />
+                <div className="booking-preview-info">
+                  <h4>Seoul Kitchen KTM</h4>
+                  <span>Jhamsikhel, Lalitpur</span>
+                </div>
+              </Link>
+              <Link to="/book" className="booking-preview-card">
+                <ImagePlaceholder name="rest-8" className="booking-preview-img" />
+                <div className="booking-preview-info">
+                  <h4>Dragon Wok House</h4>
+                  <span>Durbar Marg, Kathmandu</span>
+                </div>
+              </Link>
             </div>
-            <div className="delivery-right">
-              <h2>Reserve Your Table Today</h2>
-              <p>Skip the wait and secure your perfect spot. Whether it's a romantic dinner or a family gathering, we've got your table ready.</p>
-              <ul className="features-list">
-                <li>Easy online table reservation</li>
-                <li>Special seating for events & celebrations</li>
-                <li>Cozy ambiance with indoor & outdoor options</li>
-              </ul>
-              <Link to="/book" className="primary-btn">Book A Table</Link>
+            <div className="booking-preview-cta">
+              <Link to="/book" className="primary-btn">View All & Book A Table</Link>
             </div>
           </div>
         </section>

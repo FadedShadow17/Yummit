@@ -198,6 +198,44 @@
   border-color: #ddd;
 }
 
+.edit-phone-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border, #eee);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fafafa;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.edit-phone-wrapper:focus-within {
+  border-color: var(--charcoal, #2C2F24);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(44, 47, 36, 0.06);
+}
+
+.edit-phone-prefix {
+  padding: 14px 12px 14px 16px;
+  background: #eee;
+  color: var(--charcoal, #2C2F24);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-right: 1px solid var(--border, #eee);
+  user-select: none;
+}
+
+.edit-phone-wrapper input {
+  flex: 1;
+  min-height: 48px;
+  padding: 14px 16px;
+  border: none !important;
+  border-radius: 0 !important;
+  font-size: 0.95rem;
+  outline: none;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 .field-hint {
   font-size: 0.78rem;
   color: #999;

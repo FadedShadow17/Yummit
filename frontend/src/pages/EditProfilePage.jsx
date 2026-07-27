@@ -101,14 +101,18 @@ const EditProfilePage = () => {
             </div>
             <div className="edit-form-group">
               <label htmlFor="phone">Phone Number</label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="+977 98XXXXXXXX"
-              />
+              <div className="edit-phone-wrapper">
+                <span className="edit-phone-prefix">+977</span>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => { setFormData(prev => ({ ...prev, phone: e.target.value.replace(/[^0-9]/g, '') })); setErrors(prev => ({ ...prev, phone: '' })); setStatus(null); }}
+                  placeholder="98XXXXXXXX"
+                  maxLength={10}
+                />
+              </div>
             </div>
             {status && <div className={`form-status ${status.type}`}>{status.message}</div>}
             <div className="edit-profile-actions">

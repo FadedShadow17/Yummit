@@ -53,6 +53,7 @@ const MenuPage = () => {
   const [searchParams] = useSearchParams();
   const categoryParam = searchParams.get('category');
   const [activeCategory, setActiveCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     if (categoryParam && categories.includes(categoryParam)) {
@@ -60,9 +61,11 @@ const MenuPage = () => {
     }
   }, [categoryParam]);
 
-  const filteredItems = activeCategory === 'All'
-    ? menuItems
-    : menuItems.filter(item => item.category === activeCategory);
+  const filteredItems = menuItems.filter(item => {
+    const matchesCategory = activeCategory === 'All' || item.category === activeCategory;
+    const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className="page-wrapper">
@@ -77,6 +80,30 @@ const MenuPage = () => {
 
         <section className="page-section">
           <div className="page-container">
+            <div className="menu-search-wrapper">
+              <div className="menu-search-box">
+                <svg className="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Search for dishes..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="menu-search-input"
+                />
+                {searchQuery && (
+                  <button className="search-clear-btn" onClick={() => setSearchQuery('')}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+            </div>
+
             <div className="menu-filters">
               {categories.map(cat => (
                 <button
@@ -89,17 +116,24 @@ const MenuPage = () => {
               ))}
             </div>
 
-            <div className="menu-items-grid">
-              {filteredItems.map(item => (
-                <div key={item.id} className="menu-item-card">
-                  <ImagePlaceholder name={item.image} className="item-image" />
-                  <div className="menu-item-body">
-                    <h4>{item.name}</h4>
-                    <span className="item-price">{item.price}</span>
+            {filteredItems.length > 0 ? (
+              <div className="menu-items-grid">
+                {filteredItems.map(item => (
+                  <div key={item.id} className="menu-item-card">
+                    <ImagePlaceholder name={item.image} className="item-image" />
+                    <div className="menu-item-body">
+                      <h4>{item.name}</h4>
+                      <span className="item-price">{item.price}</span>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="menu-no-results">
+                <p>No dishes found for "{searchQuery}"</p>
+                <span>Try a different search term or browse by category</span>
+              </div>
+            )}
           </div>
         </section>
 

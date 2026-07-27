@@ -19,7 +19,7 @@ const PhonePrompt = () => {
     }
     setSaving(true);
     try {
-      await updatePhone(phone.trim());
+      await updatePhone(`+977${phone.trim()}`);
       setShow(false);
     } catch (err) {
       setError('Failed to save. Please try again.');
@@ -35,13 +35,17 @@ const PhonePrompt = () => {
         <h3>Add Your Phone Number</h3>
         <p>Add your phone number to make booking tables faster and easier.</p>
         <form onSubmit={handleSubmit}>
-          <input
-            type="tel"
-            value={phone}
-            onChange={(e) => { setPhone(e.target.value); setError(''); }}
-            placeholder="+977 98XXXXXXXX"
-            className="phone-prompt-input"
-          />
+          <div className="phone-input-wrapper">
+            <span className="phone-prefix">+977</span>
+            <input
+              type="tel"
+              value={phone}
+              onChange={(e) => { setPhone(e.target.value.replace(/[^0-9]/g, '')); setError(''); }}
+              placeholder="98XXXXXXXX"
+              className="phone-prompt-input with-prefix"
+              maxLength={10}
+            />
+          </div>
           {error && <span className="phone-prompt-error">{error}</span>}
           <div className="phone-prompt-actions">
             <button type="button" className="phone-prompt-skip" onClick={() => setShow(false)}>

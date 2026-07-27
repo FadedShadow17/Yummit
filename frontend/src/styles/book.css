@@ -21,8 +21,196 @@
   line-height: 1.7;
 }
 
+/* Restaurant Listings */
+.restaurant-listings {
+  padding: 40px 0 60px;
+  background: var(--cream);
+}
+
+.listings-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  text-align: center;
+  margin: 0 0 8px;
+  color: var(--charcoal);
+}
+
+.listings-subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin: 0 0 36px;
+  font-size: 0.95rem;
+}
+
+.restaurant-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.restaurant-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.restaurant-card {
+  cursor: pointer;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.restaurant-card.selected {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(173, 52, 62, 0.15), 0 12px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+.restaurant-card-img {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.restaurant-card-img .rest-image {
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+}
+
+.restaurant-rating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #fff;
+  color: var(--charcoal);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.restaurant-card-body {
+  padding: 16px 20px 20px;
+}
+
+.restaurant-card-body h3 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  color: var(--charcoal);
+}
+
+.restaurant-cuisine {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+  color: var(--red);
+  font-weight: 500;
+}
+
+.restaurant-location {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+@media (max-width: 900px) {
+  .restaurant-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .restaurant-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.selected-restaurant-banner {
+  text-align: center;
+  margin-bottom: 36px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+.selected-restaurant-banner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin: 0 0 6px;
+  color: var(--charcoal);
+}
+
+.selected-restaurant-banner h2 span {
+  color: var(--red);
+}
+
+.selected-restaurant-banner p {
+  color: var(--muted);
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+}
+
+.change-restaurant-btn {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 8px 20px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.change-restaurant-btn:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.book-phone-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.book-phone-wrapper:focus-within {
+  border-color: var(--red);
+}
+
+.book-phone-prefix {
+  padding: 12px 12px 12px 14px;
+  background: var(--cream);
+  color: var(--charcoal);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-right: 1px solid var(--border);
+  user-select: none;
+}
+
+.book-phone-wrapper input {
+  flex: 1;
+  padding: 12px 14px;
+  border: none !important;
+  border-radius: 0 !important;
+  font-size: 0.95rem;
+  outline: none;
+}
+
 .book-form-section {
-  padding: 20px 0 60px;
+  padding: 40px 0 60px;
 }
 
 .book-form {
@@ -116,42 +304,35 @@
   100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 
-/* Animated Checkmark */
-.success-checkmark {
-  width: 72px;
-  height: 72px;
-  margin: 0 auto 24px;
+/* Restaurant header in success card */
+.success-restaurant-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  background: var(--cream, #F9F5F1);
+  border-radius: 12px;
+  margin-bottom: 24px;
 }
 
-.checkmark-svg {
-  width: 72px;
-  height: 72px;
+.success-rest-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
-.checkmark-circle {
-  stroke: #FF6B35;
-  stroke-width: 2;
-  stroke-dasharray: 166;
-  stroke-dashoffset: 166;
-  animation: strokeCircle 0.6s 0.3s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+.success-rest-name {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--charcoal, #2C2F24);
 }
 
-.checkmark-check {
-  stroke: #FF6B35;
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 48;
-  stroke-dashoffset: 48;
-  animation: strokeCheck 0.4s 0.7s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-}
-
-@keyframes strokeCircle {
-  100% { stroke-dashoffset: 0; }
-}
-
-@keyframes strokeCheck {
-  100% { stroke-dashoffset: 0; }
+.success-rest-location {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted, #4A4A4A);
 }
 
 .success-title {
@@ -323,11 +504,126 @@
   min-height: 400px;
 }
 
+.booking-summary-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  animation: summaryFadeIn 0.3s ease;
+}
+
+@keyframes summaryFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.booking-summary-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  animation: summarySlideUp 0.3s ease;
+}
+
+@keyframes summarySlideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.summary-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--charcoal);
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+.summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--cream);
+  border-radius: 8px;
+}
+
+.summary-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.summary-value {
+  font-size: 0.95rem;
+  color: var(--charcoal);
+  font-weight: 600;
+  text-align: right;
+}
+
+.summary-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.summary-btn {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.summary-btn-back {
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.summary-btn-back:hover {
+  background: #f5f5f5;
+  border-color: var(--charcoal);
+  color: var(--charcoal);
+}
+
+.summary-btn-confirm {
+  background: var(--red);
+  border: none;
+  color: #fff;
+}
+
+.summary-btn-confirm:hover {
+  background: #952d36;
+  box-shadow: 0 4px 12px rgba(173, 52, 62, 0.3);
+}
+
 @media (max-width: 600px) {
   .form-row {
     grid-template-columns: 1fr;
   }
   .book-header h1 {
     font-size: 2.4rem;
+  }
+  .booking-summary-card {
+    padding: 24px 20px;
+  }
+  .summary-actions {
+    flex-direction: column;
   }
 }
