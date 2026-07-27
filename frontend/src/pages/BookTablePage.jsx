@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ImagePlaceholder from '../components/ImagePlaceholder';
 import { AuthContext } from '../context/AuthContext';
+import { BookingContext } from '../context/BookingContext';
 import '../styles/book.css';
 
 const restaurants = [
@@ -34,6 +35,7 @@ const timeLabels = {
 
 const BookTablePage = () => {
   const { user } = useContext(AuthContext);
+  const { toggleFavourite, isFavourite, addBooking } = useContext(BookingContext);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [formData, setFormData] = useState({
     date: '',
@@ -56,6 +58,18 @@ const BookTablePage = () => {
   };
 
   const confirmBooking = () => {
+    addBooking({
+      restaurant: selectedRestaurant?.name,
+      location: selectedRestaurant?.location,
+      cuisine: selectedRestaurant?.cuisine,
+      image: selectedRestaurant?.image,
+      date: formData.date,
+      time: formData.time,
+      guests: formData.guests,
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+    });
     setShowSummary(false);
     setSubmitted(true);
   };
@@ -153,6 +167,15 @@ const BookTablePage = () => {
                   <div className="restaurant-card-img">
                     <ImagePlaceholder name={rest.image} className="rest-image" />
                     <span className="restaurant-rating">★ {rest.rating}</span>
+                    <button
+                      className={`favourite-btn ${isFavourite(rest.id) ? 'favourited' : ''}`}
+                      onClick={(e) => { e.stopPropagation(); toggleFavourite(rest); }}
+                      title={isFavourite(rest.id) ? 'Remove from favourites' : 'Add to favourites'}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill={isFavourite(rest.id) ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                      </svg>
+                    </button>
                   </div>
                   <div className="restaurant-card-body">
                     <h3>{rest.name}</h3>

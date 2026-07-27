@@ -287,6 +287,232 @@
   color: #8b1c1c;
 }
 
+/* Profile Tabs */
+.profile-tabs {
+  display: flex;
+  gap: 4px;
+  margin: 24px 0;
+  background: #f1f1f1;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.profile-tab {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted, #666);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.profile-tab:hover {
+  color: var(--charcoal, #2C2F24);
+}
+
+.profile-tab.active {
+  background: #fff;
+  color: var(--charcoal, #2C2F24);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.profile-section {
+  width: 100%;
+}
+
+/* Empty State */
+.profile-empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+}
+
+.profile-empty-state p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--charcoal, #2C2F24);
+  margin: 0 0 6px;
+}
+
+.profile-empty-state span {
+  color: var(--muted, #666);
+  font-size: 0.9rem;
+}
+
+/* Booking History */
+.booking-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.booking-history-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  transition: box-shadow 0.2s ease;
+}
+
+.booking-history-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.booking-history-img {
+  flex-shrink: 0;
+}
+
+.history-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.booking-history-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.booking-history-details h4 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  color: var(--charcoal, #2C2F24);
+}
+
+.history-location {
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  color: var(--muted, #666);
+}
+
+.history-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.history-meta span {
+  font-size: 0.8rem;
+  color: var(--muted, #666);
+  background: #f5f5f5;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.booking-history-status {
+  flex-shrink: 0;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: #d8f3df;
+  color: #1b6b35;
+}
+
+/* Favourites */
+.favourites-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.favourite-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.favourite-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.favourite-card-img {
+  position: relative;
+  height: 120px;
+}
+
+.fav-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.favourite-remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #fff;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--red, #AD343E);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease;
+}
+
+.favourite-remove-btn:hover {
+  transform: scale(1.1);
+}
+
+.favourite-card-body {
+  padding: 12px 14px 8px;
+}
+
+.favourite-card-body h4 {
+  margin: 0 0 3px;
+  font-size: 0.9rem;
+  color: var(--charcoal, #2C2F24);
+}
+
+.favourite-card-body p {
+  margin: 0 0 2px;
+  font-size: 0.8rem;
+  color: var(--muted, #666);
+}
+
+.favourite-card-body span {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.favourite-book-btn {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid #eee;
+  text-decoration: none;
+  color: var(--red, #AD343E);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.favourite-book-btn:hover {
+  background: #fdf3f3;
+}
+
 @media (max-width: 768px) {
   .profile-banner {
     height: 160px;
@@ -312,5 +538,18 @@
   }
   .edit-profile-form {
     padding: 24px;
+  }
+  .profile-tabs {
+    flex-direction: column;
+  }
+  .favourites-grid {
+    grid-template-columns: 1fr;
+  }
+  .booking-history-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .booking-history-status {
+    align-self: flex-end;
   }
 }
