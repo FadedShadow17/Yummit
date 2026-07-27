@@ -43,6 +43,10 @@ const ProfilePage = () => {
               <span className="profile-info-label">Email</span>
               <span className="profile-info-value">{user?.email}</span>
             </div>
+            <div className="profile-info-row">
+              <span className="profile-info-label">Phone</span>
+              <span className="profile-info-value">{user?.phone || 'Not added'}</span>
+            </div>
           </div>
           <div className="profile-actions">
             <button type="button" className="profile-btn profile-btn-outline" onClick={() => navigate('/edit-profile')}>

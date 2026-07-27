@@ -191,6 +191,19 @@
   box-shadow: 0 0 0 3px rgba(44, 47, 36, 0.06);
 }
 
+.edit-form-group input.input-disabled {
+  background: #eee;
+  color: #888;
+  cursor: not-allowed;
+  border-color: #ddd;
+}
+
+.field-hint {
+  font-size: 0.78rem;
+  color: #999;
+  font-style: italic;
+}
+
 .edit-profile-actions {
   display: flex;
   gap: 12px;

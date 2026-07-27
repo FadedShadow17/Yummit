@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ImagePlaceholder from '../components/ImagePlaceholder';
@@ -7,6 +8,10 @@ import '../styles/blog.css';
 
 const BlogDetailPage = () => {
   const { id } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
   const post = blogPosts.find(p => p.id === Number(id));
   const relatedPosts = blogPosts.filter(p => p.id !== Number(id)).slice(0, 4);
 

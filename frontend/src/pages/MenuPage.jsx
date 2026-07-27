@@ -1,28 +1,64 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ImagePlaceholder from '../components/ImagePlaceholder';
 import '../styles/menu.css';
 
 const menuItems = [
+  // Nepali
   { id: 1, name: 'Chicken Momo', price: 'Rs. 250', category: 'Nepali', image: 'menu-momo' },
   { id: 2, name: 'Buff Chowmein', price: 'Rs. 200', category: 'Nepali', image: 'menu-chowmein' },
   { id: 3, name: 'Chicken Sekuwa', price: 'Rs. 450', category: 'Nepali', image: 'menu-sekuwa' },
-  { id: 4, name: 'Classic Burger', price: 'Rs. 350', category: 'Fast Food', image: 'menu-burger' },
-  { id: 5, name: 'Pepperoni Pizza', price: 'Rs. 550', category: 'Fast Food', image: 'menu-pizza' },
-  { id: 6, name: 'Chicken Chilly', price: 'Rs. 380', category: 'Fast Food', image: 'menu-chickenchilly' },
-  { id: 7, name: 'Fried Rice', price: 'Rs. 280', category: 'Chinese', image: 'menu-friedrice' },
-  { id: 8, name: 'Manchurian', price: 'Rs. 320', category: 'Chinese', image: 'menu-manchurian' },
-  { id: 9, name: 'Hot & Sour Soup', price: 'Rs. 180', category: 'Chinese', image: 'menu-soup' },
-  { id: 10, name: 'Korean Fried Chicken', price: 'Rs. 520', category: 'Korean', image: 'menu-kfc' },
-  { id: 11, name: 'Bibimbap', price: 'Rs. 480', category: 'Korean', image: 'menu-bibimbap' },
-  { id: 12, name: 'Tteokbokki', price: 'Rs. 350', category: 'Korean', image: 'menu-tteokbokki' },
+  { id: 4, name: 'Thukpa', price: 'Rs. 220', category: 'Nepali', image: 'menu-thukpa' },
+  { id: 5, name: 'Dal Bhat Set', price: 'Rs. 350', category: 'Nepali', image: 'menu-dalbhat' },
+  { id: 6, name: 'Samosa', price: 'Rs. 80', category: 'Nepali', image: 'menu-samosa' },
+  { id: 7, name: 'Chatamari', price: 'Rs. 180', category: 'Nepali', image: 'menu-chatamari' },
+  { id: 8, name: 'Sel Roti', price: 'Rs. 60', category: 'Nepali', image: 'menu-selroti' },
+
+  // Fast Food
+  { id: 9, name: 'Classic Burger', price: 'Rs. 350', category: 'Fast Food', image: 'menu-burger' },
+  { id: 10, name: 'Pepperoni Pizza', price: 'Rs. 550', category: 'Fast Food', image: 'menu-pizza' },
+  { id: 11, name: 'Chicken Chilly', price: 'Rs. 380', category: 'Fast Food', image: 'menu-chickenchilly' },
+  { id: 12, name: 'Loaded Fries', price: 'Rs. 220', category: 'Fast Food', image: 'menu-fries' },
+  { id: 13, name: 'Buffalo Wings', price: 'Rs. 420', category: 'Fast Food', image: 'menu-wings' },
+  { id: 14, name: 'Club Sandwich', price: 'Rs. 280', category: 'Fast Food', image: 'menu-sandwich' },
+  { id: 15, name: 'Chicken Nuggets', price: 'Rs. 300', category: 'Fast Food', image: 'menu-nuggets' },
+  { id: 16, name: 'Hot Dog', price: 'Rs. 180', category: 'Fast Food', image: 'menu-hotdog' },
+
+  // Chinese
+  { id: 17, name: 'Fried Rice', price: 'Rs. 280', category: 'Chinese', image: 'menu-friedrice' },
+  { id: 18, name: 'Manchurian', price: 'Rs. 320', category: 'Chinese', image: 'menu-manchurian' },
+  { id: 19, name: 'Hot & Sour Soup', price: 'Rs. 180', category: 'Chinese', image: 'menu-soup' },
+  { id: 20, name: 'Chop Suey', price: 'Rs. 300', category: 'Chinese', image: 'menu-chopsuey' },
+  { id: 21, name: 'Dim Sum', price: 'Rs. 350', category: 'Chinese', image: 'menu-dimsum' },
+  { id: 22, name: 'Spring Rolls', price: 'Rs. 200', category: 'Chinese', image: 'menu-springroll' },
+  { id: 23, name: 'Hakka Noodles', price: 'Rs. 260', category: 'Chinese', image: 'menu-noodles' },
+  { id: 24, name: 'Wontons', price: 'Rs. 240', category: 'Chinese', image: 'menu-wontons' },
+
+  // Korean
+  { id: 25, name: 'Korean Fried Chicken', price: 'Rs. 520', category: 'Korean', image: 'menu-kfc' },
+  { id: 26, name: 'Bibimbap', price: 'Rs. 480', category: 'Korean', image: 'menu-bibimbap' },
+  { id: 27, name: 'Tteokbokki', price: 'Rs. 350', category: 'Korean', image: 'menu-tteokbokki' },
+  { id: 28, name: 'Japchae', price: 'Rs. 400', category: 'Korean', image: 'menu-japchae' },
+  { id: 29, name: 'Kimchi Stew', price: 'Rs. 380', category: 'Korean', image: 'menu-kimchi' },
+  { id: 30, name: 'Bulgogi', price: 'Rs. 550', category: 'Korean', image: 'menu-bulgogi' },
+  { id: 31, name: 'Ramyeon', price: 'Rs. 280', category: 'Korean', image: 'menu-ramyeon' },
+  { id: 32, name: 'Kimbap', price: 'Rs. 320', category: 'Korean', image: 'menu-kimbap' },
 ];
 
 const categories = ['All', 'Nepali', 'Fast Food', 'Chinese', 'Korean'];
 
 const MenuPage = () => {
+  const [searchParams] = useSearchParams();
+  const categoryParam = searchParams.get('category');
   const [activeCategory, setActiveCategory] = useState('All');
+
+  useEffect(() => {
+    if (categoryParam && categories.includes(categoryParam)) {
+      setActiveCategory(categoryParam);
+    }
+  }, [categoryParam]);
 
   const filteredItems = activeCategory === 'All'
     ? menuItems

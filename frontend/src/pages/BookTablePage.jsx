@@ -1,16 +1,34 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { AuthContext } from '../context/AuthContext';
 import '../styles/book.css';
 
+const timeLabels = {
+  '10:00': '10:00 AM',
+  '11:00': '11:00 AM',
+  '12:00': '12:00 PM',
+  '13:00': '1:00 PM',
+  '14:00': '2:00 PM',
+  '15:00': '3:00 PM',
+  '16:00': '4:00 PM',
+  '17:00': '5:00 PM',
+  '18:00': '6:00 PM',
+  '19:00': '7:00 PM',
+  '20:00': '8:00 PM',
+  '21:00': '9:00 PM',
+};
+
 const BookTablePage = () => {
+  const { user } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     date: '',
     time: '',
     guests: '2',
-    name: '',
-    phone: '',
-    email: '',
+    name: user ? `${user.firstName} ${user.lastName}` : '',
+    phone: user?.phone || '',
+    email: user?.email || '',
   });
   const [submitted, setSubmitted] = useState(false);
 
@@ -21,8 +39,74 @@ const BookTablePage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
   };
+
+  const formatDate = (dateStr) => {
+    if (!dateStr) return '';
+    const date = new Date(dateStr + 'T00:00:00');
+    return date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  };
+
+  if (submitted) {
+    return (
+      <div className="page-wrapper">
+        <div className="booking-success-overlay">
+          <div className="success-confetti">
+            <span className="confetti-piece"></span>
+            <span className="confetti-piece"></span>
+            <span className="confetti-piece"></span>
+            <span className="confetti-piece"></span>
+            <span className="confetti-piece"></span>
+            <span className="confetti-piece"></span>
+            <span className="confetti-piece"></span>
+            <span className="confetti-piece"></span>
+            <span className="confetti-piece"></span>
+            <span className="confetti-piece"></span>
+            <span className="confetti-piece"></span>
+            <span className="confetti-piece"></span>
+          </div>
+          <div className="success-card">
+            <div className="success-checkmark">
+              <svg viewBox="0 0 52 52" className="checkmark-svg">
+                <circle className="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+                <path className="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+              </svg>
+            </div>
+            <h1 className="success-title">Table Booked!</h1>
+            <p className="success-subtitle">We're excited to serve you, {formData.name.split(' ')[0]}!</p>
+            <div className="success-details">
+              <div className="success-detail-item">
+                <span className="detail-icon">📅</span>
+                <div>
+                  <span className="detail-label">Date</span>
+                  <span className="detail-value">{formatDate(formData.date)}</span>
+                </div>
+              </div>
+              <div className="success-detail-item">
+                <span className="detail-icon">⏰</span>
+                <div>
+                  <span className="detail-label">Time</span>
+                  <span className="detail-value">{timeLabels[formData.time] || formData.time}</span>
+                </div>
+              </div>
+              <div className="success-detail-item">
+                <span className="detail-icon">👥</span>
+                <div>
+                  <span className="detail-label">Guests</span>
+                  <span className="detail-value">{formData.guests} {Number(formData.guests) === 1 ? 'Person' : 'People'}</span>
+                </div>
+              </div>
+            </div>
+            <p className="success-note">A confirmation will be sent to <strong>{formData.email || formData.phone}</strong></p>
+            <div className="success-actions">
+              <Link to="/" className="success-btn success-btn-primary">Back to Home</Link>
+              <Link to="/menu" className="success-btn success-btn-outline">Explore Menu</Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="page-wrapper">
@@ -92,7 +176,6 @@ const BookTablePage = () => {
                 </div>
               </div>
               <button type="submit" className="book-submit-btn">Book A Table</button>
-              {submitted && <p className="book-success">Your table has been booked successfully! We'll confirm shortly.</p>}
             </form>
           </div>
         </section>

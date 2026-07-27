@@ -37,6 +37,7 @@ exports.register = async (req, res, next) => {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        phone: user.phone || '',
       },
     });
   } catch (error) {
@@ -74,6 +75,7 @@ exports.login = async (req, res, next) => {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        phone: user.phone || '',
       },
     });
   } catch (error) {
@@ -93,6 +95,7 @@ exports.getProfile = async (req, res, next) => {
         firstName: req.user.firstName,
         lastName: req.user.lastName,
         email: req.user.email,
+        phone: req.user.phone || '',
         createdAt: req.user.createdAt,
       },
     });

@@ -83,19 +83,20 @@ const HomePage = () => {
           <div className="page-container delivery-section">
             <div className="delivery-left">
               <div className="collage">
-                <ImagePlaceholder name="delivery-1" className="c1 rounded" />
-                <ImagePlaceholder name="delivery-2" className="c2 rounded" />
-                <ImagePlaceholder name="delivery-3" className="c3 rounded" />
+                <ImagePlaceholder name="booking-1" className="c1 rounded" />
+                <ImagePlaceholder name="booking-2" className="c2 rounded" />
+                <ImagePlaceholder name="booking-3" className="c3 rounded" />
               </div>
             </div>
             <div className="delivery-right">
-              <h2>Fastest Delivery in Kathmandu</h2>
-              <p>Craving momo at midnight or pizza for lunch? We deliver hot, fresh meals across the valley.</p>
+              <h2>Reserve Your Table Today</h2>
+              <p>Skip the wait and secure your perfect spot. Whether it's a romantic dinner or a family gathering, we've got your table ready.</p>
               <ul className="features-list">
-                <li>Delivery within 30 minutes</li>
-                <li>Order via Pathao, Foodmandu & BhojDeals</li>
-                <li>Available all across Kathmandu valley</li>
+                <li>Easy online table reservation</li>
+                <li>Special seating for events & celebrations</li>
+                <li>Cozy ambiance with indoor & outdoor options</li>
               </ul>
+              <Link to="/book" className="primary-btn">Book A Table</Link>
             </div>
           </div>
         </section>
@@ -104,9 +105,9 @@ const HomePage = () => {
           <div className="page-container testimonials">
             <SectionHeading title="What Our Customers Say" />
             <div className="test-grid">
-              <TestimonialCard quoteTitle={'"Best momo in town"'} text="Yummit ko momo khayera ta mann nai khusi bhayo. Freshly steamed, juicy filling — yo bhanda ramro momo Kathmandu ma vetina!" name="Aarav Shrestha" location="Thamel, Kathmandu" image="avatar-1" />
-              <TestimonialCard quoteTitle={'"Family favourite"'} text="Harek Saturday family dinner ko lagi yahaa aauchhau. Thali set ekdam authentic cha, ghar ko khana jasto lagcha." name="Srijana Maharjan" location="Lalitpur" image="avatar-2" />
-              <TestimonialCard quoteTitle={'"Fast delivery, great taste"'} text="Online order gareko 25 minutes ma pugyo. Newari khaja set ekdam taja ra swadilo thiyo. Must try!" name="Bikash Tamang" location="Bhaktapur" image="avatar-3" />
+              <TestimonialCard quoteTitle={'"Loved the blog recipes!"'} text="Yummit ko blog padhera ghar mai momo banaye — step-by-step guide ekdam helpful thiyo. Now I visit the restaurant too to compare!" name="Aarav Shrestha" location="Thamel, Kathmandu" image="avatar-1" />
+              <TestimonialCard quoteTitle={'"Easiest table booking ever"'} text="Online table book garyo, pugda seat ready thiyo. No waiting, no hassle — birthday celebration ekdam smooth bhayo!" name="Srijana Maharjan" location="Lalitpur" image="avatar-2" />
+              <TestimonialCard quoteTitle={'"Blog inspired our dinner"'} text="Newari cuisine blog article padhepaxi table book garyo. Exactly what the blog described — authentic flavors and perfect ambiance!" name="Bikash Tamang" location="Bhaktapur" image="avatar-3" />
             </div>
           </div>
         </section>

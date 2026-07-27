@@ -1,11 +1,46 @@
 
 .auth-page {
   min-height: 100vh;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 24px;
   position: relative;
   background: #f5f4f2;
+}
+
+.auth-home-link {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #2C2F24;
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+}
+
+.auth-home-link:hover {
+  background: #FF6B35;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.2);
+}
+
+.auth-home-arrow {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.auth-home-link:hover .auth-home-arrow {
+  transform: translateX(-3px);
 }
 
 
@@ -34,7 +69,7 @@
 .auth-visual-panel {
   position: relative;
   padding: 48px 36px;
-  background: linear-gradient(160deg, #AD343E 0%, #8B2A32 40%, #6b1f27 100%);
+  background: linear-gradient(160deg, #FF6B35 0%, #E85D2C 40%, #D4491A 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -191,7 +226,7 @@
   transform: translateY(-50%);
   background: transparent;
   border: none;
-  color: var(--red, #AD343E);
+  color: var(--red, #FF6B35);
   font-weight: 700;
   cursor: pointer;
   font-size: 0.8rem;
@@ -206,14 +241,14 @@
   cursor: pointer;
   border: none;
   color: #fff;
-  background: linear-gradient(135deg, #AD343E 0%, #8B2A32 100%);
+  background: linear-gradient(135deg, #FF6B35 0%, #E85D2C 100%);
   font-size: 1rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .auth-form .primary-btn:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 12px 30px rgba(173, 52, 62, 0.25);
+  box-shadow: 0 12px 30px rgba(255, 107, 53, 0.25);
 }
 
 .auth-form .primary-btn:disabled {
@@ -288,7 +323,7 @@
 }
 
 .auth-footer a {
-  color: var(--red, #AD343E);
+  color: var(--red, #FF6B35);
   text-decoration: none;
   font-weight: 600;
 }
@@ -296,7 +331,7 @@
 .field-error,
 .form-error {
   margin: 0;
-  color: var(--red, #AD343E);
+  color: var(--red, #FF6B35);
   font-size: 0.82rem;
 }
 

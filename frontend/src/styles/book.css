@@ -85,11 +85,232 @@
   box-shadow: 0 8px 20px rgba(173, 52, 62, 0.25);
 }
 
-.book-success {
+/* ===== Success Celebration Screen (Peak-End Rule) ===== */
+
+.booking-success-overlay {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #fff8f5 0%, #fff0eb 50%, #ffe8e0 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+}
+
+.success-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 56px 48px;
+  max-width: 480px;
+  width: 100%;
   text-align: center;
-  color: #2e7d32;
+  box-shadow: 0 24px 80px rgba(255, 107, 53, 0.12);
+  position: relative;
+  z-index: 2;
+  animation: cardPopIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardPopIn {
+  0% { transform: scale(0.8) translateY(30px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Animated Checkmark */
+.success-checkmark {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 24px;
+}
+
+.checkmark-svg {
+  width: 72px;
+  height: 72px;
+}
+
+.checkmark-circle {
+  stroke: #FF6B35;
+  stroke-width: 2;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: strokeCircle 0.6s 0.3s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+  stroke: #FF6B35;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: strokeCheck 0.4s 0.7s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+@keyframes strokeCircle {
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes strokeCheck {
+  100% { stroke-dashoffset: 0; }
+}
+
+.success-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2C2F24;
+  margin: 0 0 8px;
+}
+
+.success-subtitle {
+  color: #666;
+  font-size: 1.05rem;
+  margin: 0 0 32px;
+}
+
+.success-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #faf8f6;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.success-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+}
+
+.detail-icon {
+  font-size: 1.4rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.detail-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.detail-value {
+  display: block;
+  font-size: 1rem;
+  color: #2C2F24;
   font-weight: 600;
-  margin: 12px 0 0;
+}
+
+.success-note {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0 0 28px;
+}
+
+.success-note strong {
+  color: #555;
+}
+
+.success-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.success-btn {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.success-btn-primary {
+  background: #FF6B35;
+  color: #fff;
+}
+
+.success-btn-primary:hover {
+  background: #e85d2c;
+  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.25);
+  transform: translateY(-1px);
+}
+
+.success-btn-outline {
+  background: transparent;
+  border: 2px solid #2C2F24;
+  color: #2C2F24;
+}
+
+.success-btn-outline:hover {
+  background: #2C2F24;
+  color: #fff;
+}
+
+/* Confetti */
+.success-confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  top: -20px;
+  animation: confettiFall 3s ease-in-out forwards;
+}
+
+.confetti-piece:nth-child(1) { left: 10%; background: #FF6B35; animation-delay: 0.1s; animation-duration: 2.8s; }
+.confetti-piece:nth-child(2) { left: 20%; background: #FFB74D; animation-delay: 0.3s; animation-duration: 3.2s; width: 8px; height: 14px; }
+.confetti-piece:nth-child(3) { left: 35%; background: #4CAF50; animation-delay: 0.0s; animation-duration: 2.6s; }
+.confetti-piece:nth-child(4) { left: 45%; background: #2196F3; animation-delay: 0.5s; animation-duration: 3s; width: 12px; height: 8px; }
+.confetti-piece:nth-child(5) { left: 55%; background: #FF6B35; animation-delay: 0.2s; animation-duration: 2.9s; }
+.confetti-piece:nth-child(6) { left: 65%; background: #9C27B0; animation-delay: 0.4s; animation-duration: 3.1s; width: 7px; height: 12px; }
+.confetti-piece:nth-child(7) { left: 75%; background: #FFB74D; animation-delay: 0.1s; animation-duration: 2.7s; }
+.confetti-piece:nth-child(8) { left: 85%; background: #4CAF50; animation-delay: 0.6s; animation-duration: 3.3s; width: 11px; height: 7px; }
+.confetti-piece:nth-child(9) { left: 30%; background: #FF5252; animation-delay: 0.7s; animation-duration: 3s; }
+.confetti-piece:nth-child(10) { left: 50%; background: #FFEB3B; animation-delay: 0.2s; animation-duration: 2.5s; width: 9px; height: 13px; }
+.confetti-piece:nth-child(11) { left: 70%; background: #2196F3; animation-delay: 0.5s; animation-duration: 2.8s; }
+.confetti-piece:nth-child(12) { left: 90%; background: #FF6B35; animation-delay: 0.3s; animation-duration: 3.2s; width: 8px; height: 10px; }
+
+@keyframes confettiFall {
+  0% { top: -20px; transform: rotate(0deg) translateX(0); opacity: 1; }
+  25% { transform: rotate(90deg) translateX(15px); }
+  50% { transform: rotate(180deg) translateX(-10px); }
+  75% { transform: rotate(270deg) translateX(20px); opacity: 0.8; }
+  100% { top: 110%; transform: rotate(360deg) translateX(-5px); opacity: 0; }
+}
+
+@media (max-width: 500px) {
+  .success-card {
+    padding: 40px 24px;
+  }
+  .success-title {
+    font-size: 1.6rem;
+  }
+  .success-actions {
+    flex-direction: column;
+  }
 }
 
 .map-section {

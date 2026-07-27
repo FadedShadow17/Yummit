@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom';
+import '../styles/auth.css';
 
 const AuthLayout = ({ title, children, panelContent, reverse = false, footerText, footerLink, footerLinkText, googleText }) => {
   return (
     <div className="auth-page">
+      <Link to="/" className="auth-home-link">
+        <span className="auth-home-arrow">←</span>
+        <span>Back to Home</span>
+      </Link>
       <div className={`auth-card ${reverse ? 'reverse' : ''}`}>
         <div className="auth-visual-panel">
           <div className="visual-content">

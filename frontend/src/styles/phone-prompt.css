@@ -1,0 +1,120 @@
+.phone-prompt-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.phone-prompt-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 36px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.phone-prompt-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.phone-prompt-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+  color: #2C2F24;
+  font-family: 'Playfair Display', serif;
+}
+
+.phone-prompt-card p {
+  margin: 0 0 24px;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.phone-prompt-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.phone-prompt-input:focus {
+  border-color: #FF6B35;
+}
+
+.phone-prompt-error {
+  display: block;
+  color: #e74c3c;
+  font-size: 0.82rem;
+  margin-top: 6px;
+  text-align: left;
+}
+
+.phone-prompt-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.phone-prompt-skip {
+  flex: 1;
+  padding: 12px;
+  border: 1.5px solid #ddd;
+  background: #fff;
+  border-radius: 8px;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.phone-prompt-skip:hover {
+  background: #f5f5f5;
+}
+
+.phone-prompt-save {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: #FF6B35;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.phone-prompt-save:hover:not(:disabled) {
+  background: #e85d2c;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.phone-prompt-save:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -6,6 +7,9 @@ import blogPosts from '../data/blogData';
 import '../styles/blog.css';
 
 const BlogPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="page-wrapper">
       <Navbar />

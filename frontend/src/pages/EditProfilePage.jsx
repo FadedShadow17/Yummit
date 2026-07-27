@@ -11,7 +11,7 @@ const EditProfilePage = () => {
   const [formData, setFormData] = useState({
     firstName: user?.firstName || '',
     lastName: user?.lastName || '',
-    email: user?.email || '',
+    phone: user?.phone || '',
   });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
@@ -27,8 +27,6 @@ const EditProfilePage = () => {
     const nextErrors = {};
     if (!formData.firstName.trim()) nextErrors.firstName = 'First name is required';
     if (!formData.lastName.trim()) nextErrors.lastName = 'Last name is required';
-    if (!formData.email.trim()) nextErrors.email = 'Email is required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) nextErrors.email = 'Enter a valid email';
     return nextErrors;
   };
 
@@ -95,11 +93,22 @@ const EditProfilePage = () => {
                 id="email"
                 name="email"
                 type="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Enter email"
+                value={user?.email || ''}
+                disabled
+                className="input-disabled"
               />
-              {errors.email && <span className="field-error">{errors.email}</span>}
+              <span className="field-hint">Email cannot be changed</span>
+            </div>
+            <div className="edit-form-group">
+              <label htmlFor="phone">Phone Number</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="+977 98XXXXXXXX"
+              />
             </div>
             {status && <div className={`form-status ${status.type}`}>{status.message}</div>}
             <div className="edit-profile-actions">

@@ -8,17 +8,13 @@ exports.updateProfile = async (req, res, next) => {
   }
 
   try {
-    const { firstName, lastName, email } = req.body;
-    const normalizedEmail = email.toLowerCase().trim();
-
-    const existingUser = await User.findOne({ email: normalizedEmail, _id: { $ne: req.user._id } });
-    if (existingUser) {
-      return res.status(409).json({ message: 'Email is already in use' });
-    }
+    const { firstName, lastName, phone } = req.body;
 
     req.user.firstName = firstName.trim();
     req.user.lastName = lastName.trim();
-    req.user.email = normalizedEmail;
+    if (phone !== undefined) {
+      req.user.phone = phone.trim();
+    }
 
     await req.user.save();
 
@@ -30,6 +26,7 @@ exports.updateProfile = async (req, res, next) => {
         firstName: req.user.firstName,
         lastName: req.user.lastName,
         email: req.user.email,
+        phone: req.user.phone,
         createdAt: req.user.createdAt,
       },
     });

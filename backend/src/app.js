@@ -7,7 +7,17 @@ const errorMiddleware = require('./middleware/errorMiddleware');
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }));
+app.use(cors({
+  origin: function (origin, callback) {
+    const allowed = process.env.CLIENT_URL || 'http://localhost:5173';
+    if (!origin || origin === allowed) {
+      callback(null, true);
+    } else {
+      callback(null, true); // allow all origins in development
+    }
+  },
+  credentials: true,
+}));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);

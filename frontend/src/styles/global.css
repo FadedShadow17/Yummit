@@ -27,8 +27,15 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   font-family: 'DM Sans', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.08rem;
+  line-height: 1.65;
   background: var(--cream);
   color: #222;
+}
+
+/* Bump up small text globally */
+p, span, a, li, label, input, select, textarea, button {
+  font-size: max(0.95rem, inherit);
 }
 
 *,*::before,*::after{box-sizing:border-box}
