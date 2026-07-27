@@ -8,14 +8,14 @@ import { BookingContext } from '../context/BookingContext';
 import '../styles/book.css';
 
 const restaurants = [
-  { id: 1, name: 'Himalayan Dine', location: 'Thamel, Kathmandu', cuisine: 'Nepali & Continental', rating: 4.8, image: 'rest-1', mapQuery: 'Thamel,Kathmandu,Nepal' },
-  { id: 2, name: 'Bhojan Griha', location: 'Dillibazar, Kathmandu', cuisine: 'Traditional Newari', rating: 4.7, image: 'rest-2', mapQuery: 'Dillibazar,Kathmandu,Nepal' },
-  { id: 3, name: 'Momo House Nepal', location: 'Lazimpat, Kathmandu', cuisine: 'Nepali Street Food', rating: 4.6, image: 'rest-3', mapQuery: 'Lazimpat,Kathmandu,Nepal' },
-  { id: 4, name: 'Gurung Kitchen', location: 'Jhamsikhel, Lalitpur', cuisine: 'Nepali & Tibetan', rating: 4.5, image: 'rest-4', mapQuery: 'Jhamsikhel,Lalitpur,Nepal' },
-  { id: 5, name: 'Thakali Bhanchha', location: 'New Baneshwor', cuisine: 'Thakali Cuisine', rating: 4.9, image: 'rest-5', mapQuery: 'New+Baneshwor,Kathmandu,Nepal' },
-  { id: 6, name: 'Patan Sekuwa Corner', location: 'Patan Durbar Square', cuisine: 'Grill & BBQ', rating: 4.4, image: 'rest-6', mapQuery: 'Patan+Durbar+Square,Lalitpur,Nepal' },
-  { id: 7, name: 'Seoul Kitchen KTM', location: 'Jhamsikhel, Lalitpur', cuisine: 'Korean BBQ & Soju Bar', rating: 4.7, image: 'rest-7', mapQuery: 'Jhamsikhel,Lalitpur,Nepal' },
-  { id: 8, name: 'Dragon Wok House', location: 'Durbar Marg, Kathmandu', cuisine: 'Authentic Chinese & Dim Sum', rating: 4.6, image: 'rest-8', mapQuery: 'Durbar+Marg,Kathmandu,Nepal' },
+  { id: 1, name: 'Himalayan Dine', location: 'Thamel, Kathmandu', cuisine: 'Nepali & Continental', rating: 4.8, image: 'rest-1', mapQuery: 'Himalayan+Dine,Thamel,Kathmandu,Nepal', mapCoords: '27.7150,85.3120' },
+  { id: 2, name: 'Bhojan Griha', location: 'Dillibazar, Kathmandu', cuisine: 'Traditional Newari', rating: 4.7, image: 'rest-2', mapQuery: 'Bhojan+Griha,Dillibazar,Kathmandu,Nepal', mapCoords: '27.7050,85.3250' },
+  { id: 3, name: 'Momo House Nepal', location: 'Lazimpat, Kathmandu', cuisine: 'Nepali Street Food', rating: 4.6, image: 'rest-3', mapQuery: 'Momo+House,Lazimpat,Kathmandu,Nepal', mapCoords: '27.7200,85.3200' },
+  { id: 4, name: 'Gurung Kitchen', location: 'Jhamsikhel, Lalitpur', cuisine: 'Nepali & Tibetan', rating: 4.5, image: 'rest-4', mapQuery: 'Gurung+Kitchen,Jhamsikhel,Lalitpur,Nepal', mapCoords: '27.6760,85.3150' },
+  { id: 5, name: 'Thakali Bhanchha', location: 'New Baneshwor', cuisine: 'Thakali Cuisine', rating: 4.9, image: 'rest-5', mapQuery: 'Thakali+Bhanchha,New+Baneshwor,Kathmandu,Nepal', mapCoords: '27.6910,85.3420' },
+  { id: 6, name: 'Patan Sekuwa Corner', location: 'Patan Durbar Square', cuisine: 'Grill & BBQ', rating: 4.4, image: 'rest-6', mapQuery: 'Sekuwa+Corner,Patan+Durbar+Square,Lalitpur,Nepal', mapCoords: '27.6730,85.3250' },
+  { id: 7, name: 'Seoul Kitchen KTM', location: 'Jhamsikhel, Lalitpur', cuisine: 'Korean BBQ & Soju Bar', rating: 4.7, image: 'rest-7', mapQuery: 'Seoul+Kitchen,Jhamsikhel,Lalitpur,Nepal', mapCoords: '27.6755,85.3140' },
+  { id: 8, name: 'Dragon Wok House', location: 'Durbar Marg, Kathmandu', cuisine: 'Authentic Chinese & Dim Sum', rating: 4.6, image: 'rest-8', mapQuery: 'Dragon+Wok,Durbar+Marg,Kathmandu,Nepal', mapCoords: '27.7130,85.3180' },
 ];
 
 const timeLabels = {
@@ -295,7 +295,7 @@ const BookTablePage = () => {
                   </div>
                   <iframe
                     title={`${selectedRestaurant.name} Location`}
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${selectedRestaurant.mapQuery}`}
+                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${selectedRestaurant.mapQuery}&zoom=16`}
                     style={{ border: 0 }}
                     allowFullScreen=""
                     loading="lazy"
